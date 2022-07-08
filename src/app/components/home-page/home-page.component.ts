@@ -64,16 +64,21 @@ export class HomePageComponent implements OnInit {
       back_pic_normal: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/4.png',
       shiny_pic_front: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/4.png',
       shiny_pic_back: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/4.png',
-      types: [],
+      types: ['fire'],
       weight: 85,
       height: 6,
       attack: 52
     },
   ];
 
+  default: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  
+  toggleShiny(){
+    this.default == true? this.default = false : this.default = true;
+  }
 }

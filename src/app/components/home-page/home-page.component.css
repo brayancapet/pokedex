@@ -105,10 +105,14 @@
 .shiny{
     height: 20%;
     width: 100%;
-    background-color: #ffcb05;
+    background-color: gray;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+}
+.shiny p{
+    font-size: 25px;
+    padding-left: 10px;
 }
 
 /* shiny button's style */
@@ -130,12 +134,34 @@
 .specs{
     width: 100%;
     height: 50%;
-    background-color: aquamarine;
+    background-color: #3c5aa6;
 }
 
 /* container for my pokemon types */
 .types{
     width: 100%;
     height: 30%;
-    background-color: #ffcb05;
+    background-color: gray;
+}
+.types p{
+    font-size: 25px;
+}
+
+.types-element{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.types-element p{
+    font-size: 25px;
+}
+
+.specs{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.specs p{
+    font-size: 25px;
 }

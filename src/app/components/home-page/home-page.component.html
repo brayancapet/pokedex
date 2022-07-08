@@ -18,22 +18,30 @@
                 <p class="name">{{ card.name }}</p>
                 <p class="id">#{{card.id}}</p>
             </div>
-            <div class="pictures">
+            <div class="pictures" *ngIf="default == true">
                 <img src="{{card.front_pic_normal}}" alt="front pic for {{card.name}}">
                 <img src="{{card.back_pic_normal}}" alt="back pic for {{card.name}}">
+            </div>
+            <div class="pictures" *ngIf="default == false">
+                <img src="{{card.shiny_pic_front}}" alt="front pic for {{card.name}}">
+                <img src="{{card.shiny_pic_back}}" alt="back pic for {{card.name}}">
             </div>
         </div>
         <div class="bottom-half">
             <div class="shiny">
-                <button type="button">SHINY</button>
+                <p>TYPES</p>
+                <button type="button" (click)="toggleShiny()">SHINY</button>
             </div>
             <div class="types">
-                <p>TYPES</p>
                 <div class="types-element">
-                    
+                    <p *ngFor="let type of card.types">- {{ type }}</p>
                 </div>
             </div>
-            <div class="specs"></div>
+            <div class="specs">
+                <p> atk: {{ card.attack }}</p>
+                <p> height: {{ card.height }}</p>
+                <p> weight :{{ card.weight }}</p>
+            </div>
         </div>
    </div>
 

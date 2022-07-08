@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+
+<div class="search-pokemon-container">
+    <div class="title-search">
+        <h2>Get info on a Pokémon..</h2>
+    </div>
+    <div class="search-input">
+        <input type="text" placeholder="Search for a Pokémon..">
+        <button type="button" >Search</button>
+    </div>
+</div>
+
+<div class="search-pokemon-result" *ngIf="cards">
+
+   <div class="card" *ngFor="let card of cards">
+        <div class="top-half">
+            <div class="name-id">
+                <p class="name">{{ card.name }}</p>
+                <p class="id">#{{card.id}}</p>
+            </div>
+            <div class="pictures">
+                <img src="{{card.front_pic_normal}}" alt="front pic for {{card.name}}">
+                <img src="{{card.back_pic_normal}}" alt="back pic for {{card.name}}">
+            </div>
+        </div>
+        <div class="bottom-half">
+            <div class="shiny">
+                <button type="button">SHINY</button>
+            </div>
+            <div class="types">
+                <p>TYPES</p>
+                <div class="types-element">
+                    
+                </div>
+            </div>
+            <div class="specs"></div>
+        </div>
+   </div>
+
+</div>

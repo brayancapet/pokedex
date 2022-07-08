@@ -1,0 +1,44 @@
+/* principal container for my navbar */
+.container{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    border-bottom: 3px solid #3c5aa6
+}
+
+/* two div that make my navbar */
+.logo, .navbar-list{
+    width: 50%;
+    height: 100%;
+    background-color: #25242a;
+    color: #fff;
+    padding: 2rem;
+}
+
+/* element in my navbar list */
+.navbar-list a{
+    font-size: 25px;
+    cursor: pointer;
+    margin-right: 15px;
+    margin-top: 20px;
+}
+
+/* my element in my navbar whenever they are on hover */
+.navbar-list a:hover{
+    color: #ffcb05;
+}
+
+/* my element's container for my navbar */
+.navbar-list{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* the pokemon logo in the left of my navbar */
+.logo img{
+    width: 20%;
+    height: auto;
+    cursor: pointer;
+}
+

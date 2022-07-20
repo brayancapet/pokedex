@@ -18,11 +18,11 @@
                 <p class="name">{{ card.name }}</p>
                 <p class="id">#{{card.id}}</p>
             </div>
-            <div class="pictures" *ngIf="default == true">
+            <div class="pictures" *ngIf="card.default == true">
                 <img src="{{card.front_pic_normal}}" alt="front pic for {{card.name}}">
                 <img src="{{card.back_pic_normal}}" alt="back pic for {{card.name}}">
             </div>
-            <div class="pictures" *ngIf="default == false">
+            <div class="pictures" *ngIf="card.default == false">
                 <img src="{{card.shiny_pic_front}}" alt="front pic for {{card.name}}">
                 <img src="{{card.shiny_pic_back}}" alt="back pic for {{card.name}}">
             </div>
@@ -30,7 +30,7 @@
         <div class="bottom-half">
             <div class="shiny">
                 <p>TYPES</p>
-                <button type="button" (click)="toggleShiny()">SHINY</button>
+                <button type="button" (click)="toggleShiny(card.id)">SHINY</button>
             </div>
             <div class="types">
                 <div class="types-element">

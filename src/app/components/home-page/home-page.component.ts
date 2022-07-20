@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from 'src/app/Card';
+import { PokeapiService } from 'src/app/pokeapi.service';
 
 @Component({
   selector: 'app-home-page',
@@ -19,7 +20,8 @@ export class HomePageComponent implements OnInit {
       types: ['fire', 'flying'],
       weight: 905,
       height: 17,
-      attack: 84
+      attack: 84,
+      default: true,
     },
     {
       name: 'pikachu',
@@ -31,7 +33,8 @@ export class HomePageComponent implements OnInit {
       types: ['electric'],
       weight: 60,
       height: 4,
-      attack: 55
+      attack: 55,
+      default: true,
     },
     {
       name: 'arceus',
@@ -43,7 +46,8 @@ export class HomePageComponent implements OnInit {
       types: ['normal'],
       weight: 3200,
       height: 32,
-      attack: 120
+      attack: 120,
+      default: true,
     },
     {
       name: 'ratata',
@@ -55,7 +59,8 @@ export class HomePageComponent implements OnInit {
       types: ['normal'],
       weight: 35,
       height: 3,
-      attack: 56
+      attack: 56,
+      default: true,
     },
     {
       name: 'salameche',
@@ -67,18 +72,28 @@ export class HomePageComponent implements OnInit {
       types: ['fire'],
       weight: 85,
       height: 6,
-      attack: 52
+      attack: 52,
+      default: true,
     },
   ];
 
   default: boolean = true;
 
-  constructor() { }
+  constructor(private pokeApi: PokeapiService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.pokeApi.getRandomPokemon('dialga');
   }
   
-  toggleShiny(){
-    this.default == true? this.default = false : this.default = true;
+  toggleShiny(id: number){
+    for(let x = 0; x < this.cards.length; x++){
+      if(id == this.cards[x].id){
+        this.cards[x].default == true ? this.cards[x].default = false : this.cards[x].default = true;
+      } else {
+        console.log('continuer');
+      }
+    }
   }
+
+  
 }

@@ -8,5 +8,6 @@ export interface Card{
     types: string[],
     weight: number,
     height: number,
-    attack: number
+    attack: number,
+    default: boolean
 }

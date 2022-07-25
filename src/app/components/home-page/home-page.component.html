@@ -5,44 +5,87 @@
         <h2>Get info on a Pokémon..</h2>
     </div>
     <div class="search-input">
-        <input type="text" placeholder="Search for a Pokémon..">
-        <button type="button" >Search</button>
+        <input type="text" placeholder="Search for a Pokémon.." (keyup.enter)="showPokemon(input.value)" #input>
+        <button type="button" (click)="showPokemon(input.value)">Search</button>
     </div>
 </div>
 
-<div class="search-pokemon-result" *ngIf="cards">
+<ng-container *ngIf="apiResponse == false">
+<div class="search-pokemon-result">
 
-   <div class="card" *ngFor="let card of cards">
+   <div class="card" *ngFor="let pokemon of randomPokemonObject">
         <div class="top-half">
             <div class="name-id">
-                <p class="name">{{ card.name }}</p>
-                <p class="id">#{{card.id}}</p>
+                <p class="name">{{ pokemon.name | uppercase}}</p>
+                <p class="id">#{{ pokemon.id | number:'3.0'}}</p>
             </div>
-            <div class="pictures" *ngIf="card.default == true">
-                <img src="{{card.front_pic_normal}}" alt="front pic for {{card.name}}">
-                <img src="{{card.back_pic_normal}}" alt="back pic for {{card.name}}">
+            <div class="pictures">
+                <img src="{{pokemon.sprites.front_default}}" alt="front pic for {{pokemon.name}}">
+                <img src="{{pokemon.sprites.back_default}}" alt="back pic for {{pokemon.name}}">
             </div>
-            <div class="pictures" *ngIf="card.default == false">
-                <img src="{{card.shiny_pic_front}}" alt="front pic for {{card.name}}">
-                <img src="{{card.shiny_pic_back}}" alt="back pic for {{card.name}}">
+            <div class="pictures" *ngIf="pokemon.default == false">
+                <img src="{{pokemon.sprites.front_shiny}}" alt="front pic for {{pokemon.name}}">
+                <img src="{{pokemon.sprites.back_shiny}}" alt="back pic for {{pokemon.name}}">
             </div>
         </div>
         <div class="bottom-half">
             <div class="shiny">
                 <p>TYPES</p>
-                <button type="button" (click)="toggleShiny(card.id)">SHINY</button>
             </div>
             <div class="types">
                 <div class="types-element">
-                    <p *ngFor="let type of card.types">- {{ type }}</p>
+                    <img *ngFor="let type of pokemon.types" src="../../../assets/images/pokemon_types/{{ type.type.name }}.jpeg" alt="{{ type.type.name }}">
                 </div>
             </div>
             <div class="specs">
-                <p> atk: {{ card.attack }}</p>
-                <p> height: {{ card.height }}</p>
-                <p> weight :{{ card.weight }}</p>
+                <p> atk: {{ pokemon.stats[1].base_stat }}</p>
+                <p> height: {{ pokemon.height }}</p>
+                <p> weight :{{ pokemon.weight }}</p>
             </div>
         </div>
    </div>
 
 </div>
+</ng-container>
+
+<ng-container *ngIf="apiResponse == true">
+
+    <div class="search-pokemon-result">
+
+        <div class="card">
+             <div class="top-half">
+                 <div class="name-id">
+                     <p class="name">{{ pokemonObject.name }}</p>
+                     <p class="id">#{{ pokemonObject.id | number:'3.0'}}</p>
+                 </div>
+                 <div class="pictures" *ngIf="pokemonObject.default == true">
+                     <img src="{{pokemonObject.sprites.front_default}}" alt="front pic for {{pokemonObject.name}}">
+                     <img src="{{pokemonObject.sprites.back_default}}" alt="back pic for {{pokemonObject.name}}">
+                 </div>
+                 <div class="pictures" *ngIf="pokemonObject.default == false">
+                     <img src="{{pokemonObject.sprites.front_shiny}}" alt="front pic for {{pokemonObject.name}}">
+                     <img src="{{pokemonObject.sprites.back_shiny}}" alt="back pic for {{pokemonObject.name}}">
+                 </div>
+             </div>
+             <div class="bottom-half">
+                 <div class="shiny">
+                     <p>TYPES</p>
+                     <button type="button" (click)="toggleResultPokemonShiny()" *ngIf="pokemonObject.default == true">SHINY</button>
+                     <button type="button" (click)="toggleResultPokemonShiny()" id="shiny-btn-active" *ngIf="pokemonObject.default == false">SHINY</button>
+                 </div>
+                 <div class="types">
+                     <div class="types-element">
+                        <img *ngFor="let type of pokemonObject.types" src="../../../assets/images/pokemon_types/{{ type.type.name }}.jpeg" alt="{{ type.type.name }}">
+                     </div>
+                 </div>
+                 <div class="specs">
+                     <p> atk: {{ pokemonObject.attack }}</p>
+                     <p> height: {{ pokemonObject.height }}</p>
+                     <p> weight :{{ pokemonObject.weight }}</p>
+                 </div>
+             </div>
+        </div>
+     
+     </div>
+
+</ng-container>

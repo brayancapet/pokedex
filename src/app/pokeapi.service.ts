@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PokeapiService {
 
-  url: string = 'https://pokeapi.co/api/v2/pokemon/';
+  url: string = 'https://pokeapi.co/api/v2/';
   randomNumbers: number[] = [];
   randomPokemons: object[] = [];
 
@@ -14,18 +14,22 @@ export class PokeapiService {
 
   // Return an object about a wanted pokemon
   getPokemon(pokemon: string){
-    return this.http.get(this.url + pokemon);
+    return this.http.get(this.url + "pokemon/" + pokemon);
   }
 
   // Creates an array with 6 pokemon's informations as objects, which is used to make the 6 cards in the home page
   getRandomPokemon(){
       for(let i = 0; i < 6; i++){
         let number = Math.floor(Math.random() * 905);
-        this.http.get(this.url + number).subscribe((data: any) => {
+        this.http.get(this.url + "pokemon/" + number).subscribe((data: any) => {
         this.randomPokemons[i] = data;
       });
       }
 
       return this.randomPokemons;
+  }
+
+  getEvolutionChain(pokemonID: number){
+    return this.http.get(this.url + "evolution-chain/" + pokemonID);
   }
 }

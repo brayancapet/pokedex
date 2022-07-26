@@ -15,6 +15,7 @@ export class HomePageComponent implements OnInit {
 
   pokemonObject:any;
   randomPokemonObject: any;
+  evolutionChainObject:any;
 
   default: boolean = true;
 
@@ -29,6 +30,7 @@ export class HomePageComponent implements OnInit {
     .subscribe((data: any) => {
       this.pokemonObject = data;
       this.pokemonObject.default = true;
+      this.evolutionChainObject = this.evolutionChain(this.pokemonObject.id);
     });
 
     this.apiResponse = true; 
@@ -36,5 +38,13 @@ export class HomePageComponent implements OnInit {
 
   toggleResultPokemonShiny(){
     this.pokemonObject.default == true ? this.pokemonObject.default = false : this.pokemonObject.default = true;
+  }
+
+  evolutionChain(pokemonID: number){
+    this.pokeApi.getEvolutionChain(pokemonID)
+    .subscribe((data: any) => {
+      this.evolutionChainObject = data;
+      console.log(this.evolutionChainObject);
+    })
   }
 }

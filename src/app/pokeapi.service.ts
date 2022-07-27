@@ -13,7 +13,7 @@ export class PokeapiService {
   constructor(private http: HttpClient) { }
 
   // Return an object about a wanted pokemon
-  getPokemon(pokemon: string){
+  getPokemon(pokemon: any){
     return this.http.get(this.url + "pokemon/" + pokemon);
   }
 
@@ -32,4 +32,10 @@ export class PokeapiService {
   getEvolutionChain(pokemonID: number){
     return this.http.get(this.url + "evolution-chain/" + pokemonID);
   }
+
+  getForm(url: string){
+    return this.http.get(url);
+  }
+
+
 }

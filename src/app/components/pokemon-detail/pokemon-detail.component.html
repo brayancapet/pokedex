@@ -1,0 +1,69 @@
+<img id="logo" routerLink="/" src="../../../assets/images/pokemon_logo2-removebg-preview.png" alt="pokemon logo">
+
+<!-- Whole container of the page -->
+<div class="container">
+
+    <!-- Basic infos on the pokemon (name, id, ) -->
+    <div class="basic-infos">
+        <h1>{{ pokemonObject.name | uppercase }} <span>#{{ pokemonObject.id | number:'3.0' }}</span></h1>
+    </div>
+
+    <!-- Types -->
+    <div class="types">
+        <img *ngFor="let type of pokemonObject.types" src="../../../assets/images/pokemon_types/{{ type.type.name }}.jpeg" alt="{{ type.type.name }}">
+    </div>
+
+    <!-- Capacités -->
+    <div class="abilities">
+        <p>{{ pokemonObject.name | uppercase }}'S ABILITIES</p>
+    </div>
+    <!-- Noms des capacités -->
+    <div class="abilities-name">
+        <p *ngFor="let abilitie of pokemonObject.abilities ">
+            {{ abilitie.ability.name }}
+        </p>
+    </div>
+
+    <!-- Sprites section with pic of default sprite and shiny sprite-->
+    <div class="sprites">
+        <div class="default">
+            <p>Default sprite</p>
+            <div class="images-poke">
+                <img src="{{pokemonObject.sprites.front_default}}" alt="{{ pokemonObject.name }}'s front picture">
+                <img src="{{pokemonObject.sprites.back_default}}" alt="{{ pokemonObject.name }}'s back picture">
+            </div>
+        </div>
+
+        <div class="shiny" *ngIf="pokemonObject.sprites.back_shiny !== null && pokemonObject.sprites.front_shiny !== null">
+            <p>Shiny sprite</p>
+            <div class="images-poke">
+                <img src="{{pokemonObject.sprites.front_shiny}}" alt="{{pokemonObject.name}}'s front shiny sprite">
+                <img src="{{pokemonObject.sprites.back_shiny}}" alt="{{pokemonObject.name}}'s back shiny sprite">
+            </div>
+        </div>
+    </div>
+
+    <!-- Differents forms section ! -->
+    <div class="forms-section">
+        <div class="form" *ngFor="let form of formsObject">
+            <img *ngFor="let type of form.types" src="../../../assets/images/pokemon_types/{{ type.type.name }}.jpeg" alt="{{ type.type.name }}" id="type">
+            <p>{{ form.name | uppercase }}</p>
+            <p>{{ form.is_mega == false ? 'not a mega evolution' : 'is a mega evolution' }}</p>
+
+            <div class="img">
+                <img src="{{ form.sprites['front_default'] }}" alt="{{form.name}} sprite">
+                <img src="{{ form.sprites['back_default'] }}" alt="{{form.name}} sprite">
+            </div>
+        </div>
+    </div>
+
+    <div class="games">
+        <div class="title">
+            <h2>"What Pokemon games do i need to have to see {{pokemonObject.name}} ?"</h2>
+        </div>
+        <div class="game" *ngFor="let game of pokemonObject.game_indices">
+            <p>{{game.version.name}}</p>
+        </div>
+    </div>
+
+</div>

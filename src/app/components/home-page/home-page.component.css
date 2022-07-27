@@ -68,6 +68,8 @@
     justify-content: center;
     align-items: center;
     margin-top: 3%;
+    margin-bottom: 7%;
+    border: #25242a solid 3px;
 }
 
 /* two div that make my card */
@@ -126,12 +128,12 @@
     margin-right: 15px;
     border-radius: 5px;
     cursor: pointer;
-    color: #fff;
-    background-color: #3c5aa6;
+    color: #FF8C7B;
+    background-color: #fff;
 }
 .shiny button:hover{
-    background-color: #3c5aa6;
-    color: #ffcb05;
+    background-color: #25242a;
+    color: #fff;
 }
 
 /* container for my specs (attack, height, weight) */
@@ -199,6 +201,8 @@ button#shiny-btn-active {
     margin-right: 15px;
     border-radius: 5px;
     cursor: pointer;
-    color: #ffcb05;
+    color: #fff;
     background-color: #25242a;
 }
+
+

@@ -31,6 +31,7 @@
         <div class="bottom-half">
             <div class="shiny">
                 <p>TYPES</p>
+                <button routerLink="/pokemon/{{pokemon.id}}">Details</button>
             </div>
             <div class="types">
                 <div class="types-element">
@@ -55,7 +56,7 @@
         <div class="card">
              <div class="top-half">
                  <div class="name-id">
-                     <p class="name">{{ pokemonObject.name }}</p>
+                     <p class="name">{{ pokemonObject.name | uppercase }}</p>
                      <p class="id">#{{ pokemonObject.id | number:'3.0'}}</p>
                  </div>
                  <div class="pictures" *ngIf="pokemonObject.default == true">
@@ -70,6 +71,7 @@
              <div class="bottom-half">
                  <div class="shiny">
                      <p>TYPES</p>
+                     <button routerLink="/pokemon/{{pokemonObject.id}}">Details</button>
                      <button type="button" (click)="toggleResultPokemonShiny()" *ngIf="pokemonObject.default == true">SHINY</button>
                      <button type="button" (click)="toggleResultPokemonShiny()" id="shiny-btn-active" *ngIf="pokemonObject.default == false">SHINY</button>
                  </div>
@@ -82,13 +84,6 @@
                     <p> <img src="../../../assets/images/punch.jpg" alt="attack"> : {{ pokemonObject.stats[1].base_stat }}</p>
                     <p> <img src="../../../assets/images/icons8-height-64.png" alt="height"> : {{ pokemonObject.height }}</p> 
                     <p> <img src="../../../assets/images/icons8-poids-(kg-50.png" alt="weight"> :{{ pokemonObject.weight }}</p>
-                 </div>
-                 <div class="evolutions">
-                    <ul>
-                        <li>1. {{ pokemonObject.name | uppercase}}</li>
-                        <li>2. test</li>
-                        <li>3. test</li>
-                    </ul>
                  </div>
              </div>
         </div>

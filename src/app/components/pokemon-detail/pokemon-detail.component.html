@@ -1,8 +1,9 @@
-<img id="logo" routerLink="/" src="../../../assets/images/pokemon_logo2-removebg-preview.png" alt="pokemon logo">
-
 <!-- Whole container of the page -->
 <div class="container">
 
+    <div class="logo">
+        <h1 routerLink="/">Home</h1>
+    </div>
     <!-- Basic infos on the pokemon (name, id, ) -->
     <div class="basic-infos">
         <h1>{{ pokemonObject.name | uppercase }} <span>#{{ pokemonObject.id | number:'3.0' }}</span></h1>
@@ -57,12 +58,13 @@
         </div>
     </div>
 
+    <div class="game-title">
+        <h2 id="featured">Featured games </h2>
+    </div>
+
     <div class="games">
-        <div class="title">
-            <h2>"What Pokemon games do i need to have to see {{pokemonObject.name}} ?"</h2>
-        </div>
         <div class="game" *ngFor="let game of pokemonObject.game_indices">
-            <p>{{game.version.name}}</p>
+            <p class="game-name">{{ game.version.name | uppercase }}</p>
         </div>
     </div>
 

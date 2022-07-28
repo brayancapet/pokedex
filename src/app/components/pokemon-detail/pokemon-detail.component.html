@@ -30,8 +30,8 @@
         <div class="default">
             <p>Default sprite</p>
             <div class="images-poke">
-                <img src="{{pokemonObject.sprites.front_default}}" alt="{{ pokemonObject.name }}'s front picture">
-                <img src="{{pokemonObject.sprites.back_default}}" alt="{{ pokemonObject.name }}'s back picture">
+                <img src="{{pokemonObject.sprites.front_default}}" alt="{{ pokemonObject.name }}'s front picture" *ngIf="pokemonObject.sprites.front_default !== null">
+                <img src="{{pokemonObject.sprites.back_default}}" alt="{{ pokemonObject.name }}'s back picture" *ngIf="pokemonObject.sprites.back_default !== null">
             </div>
         </div>
 
@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    <div class="game-title">
+    <div class="game-title" *ngIf="pokemonObject.game_indices.length > 0">
         <h2 id="featured">Featured games </h2>
     </div>
 
@@ -66,6 +66,11 @@
         <div class="game" *ngFor="let game of pokemonObject.game_indices">
             <p class="game-name">{{ game.version.name | uppercase }}</p>
         </div>
+    </div>
+
+    <div class="big-pic" *ngIf="pokemonObject.sprites.other.dream_world.front_default !== null">
+        <img src="{{ pokemonObject.sprites.other.dream_world.front_default }}" alt="{{ pokemonObject.name }} svg">
+
     </div>
 
 </div>

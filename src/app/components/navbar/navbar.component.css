@@ -20,6 +20,12 @@
     cursor: pointer;
     margin-right: 15px;
     margin-top: 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar-list a:hover {
+    color: #ffcb05;
 }
 
 /* my element in my navbar whenever they are on hover */
